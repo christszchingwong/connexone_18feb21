@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // middlewares before routers
 app.use(function(req, res, next) {
-  if (!req.headers[`mysecrettoken`]) {
+  if (req.headers.authorization != `mysecrettoken`) {
     return next(createError(403));
   }
   next();
