@@ -1,3 +1,4 @@
 # connexone_18feb21
 
-back from anniversary dinner
+web-pack-dev server doesn't run on my virtual machine.
+Take a toilet break and then will continue.
