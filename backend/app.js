@@ -20,6 +20,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.use(function(req, res, next) {
+  if (!req.headers[`mysecrettoken`]) {
+    return next(createError(403));
+  }
+  next();
+});
+
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 app.use('/time', timeRouter);
