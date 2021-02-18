@@ -1,5 +1,6 @@
 import './App.css';
 import TimeBox from './TimeBox';
+import MetricBox from './MetricBox';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         alignItems: 'stretch'
       }}>
         <TimeBox />
+        <MetricBox />
       </div>
   );
 }
