@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+const prometheusMiddleware = require('express-prometheus-middleware');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -20,13 +21,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+// middlewares before routers
 app.use(function(req, res, next) {
   if (!req.headers[`mysecrettoken`]) {
     return next(createError(403));
   }
   next();
 });
+
+app.use(prometheusMiddleware());
 
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);
